@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="129dp"
+        tools:layout_editor_absoluteY="76dp">
+
+        <ImageView
+            android:background="@drawable/homelogo"
+            android:id="@+id/imageView2"
+            android:layout_width="160dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            tools:srcCompat="@drawable/homelogo" />
+
+        <TextView
+            android:gravity="left|center"
+            android:paddingLeft="10dp"
+            android:id="@+id/customRoomName"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:textSize="35dp"
+            android:textColor="@color/white"
+            android:text="" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
