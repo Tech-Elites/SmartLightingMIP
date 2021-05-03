@@ -3,8 +3,10 @@ package com.example.smartlightingsystem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -34,6 +36,12 @@ public class LandingPage extends AppCompatActivity {
         arrayListOfRooms=new ArrayList<>();
         homeName=findViewById(R.id.houseName);
         listViewOfRooms=findViewById(R.id.itemsList);
+        listViewOfRooms.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                onClickItem(position);
+            }
+        });
         p=findViewById(R.id.landingProgress);
         p.setVisibility(View.VISIBLE);
 
@@ -59,8 +67,18 @@ public class LandingPage extends AppCompatActivity {
     }
 
     void generatePage(){
-        customAdapterListOfRoom = new CustomAdapterListOfRoom(this, arrayListOfRooms);
-        listViewOfRooms.setAdapter(customAdapterListOfRoom);
+        try {
+            customAdapterListOfRoom = new CustomAdapterListOfRoom(this, arrayListOfRooms);
+            listViewOfRooms.setAdapter(customAdapterListOfRoom);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         p.setVisibility(View.INVISIBLE);
+    }
+
+    void onClickItem(int position){
+        Intent i = new Intent(LandingPage.this, BulbInfoPage.class);
+        i.putExtra("roomname",arrayListOfRooms.get(position));
+        startActivity(i);
     }
 }

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="46dp"
+        tools:layout_editor_absoluteY="62dp">
+
+        <ImageView
+            android:background="@drawable/homelogo"
+            android:id="@+id/imageView3"
+            android:layout_width="250dp"
+            android:layout_height="130dp"
+            android:layout_weight="1"
+            tools:srcCompat="@drawable/homelogo" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:gravity="left|center"
+                android:paddingLeft="10dp"
+                android:id="@+id/eachRoomLightName"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:textSize="45dp"
+                android:textColor="@color/white"
+                android:text="" />
+
+            <TextView
+                android:gravity="left|center"
+                android:paddingLeft="10dp"
+                android:id="@+id/eachRoomLightStatus"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:text="" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
