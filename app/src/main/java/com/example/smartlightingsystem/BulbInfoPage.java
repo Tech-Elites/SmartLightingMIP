@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -39,7 +40,13 @@ public class BulbInfoPage extends AppCompatActivity {
         p=findViewById(R.id.bulbsProgress);
         p.setVisibility(View.VISIBLE);
         listViewBulbs=findViewById(R.id.bulbsList);
-
+        listViewBulbs.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                ChangeStatus(position);
+                return true;
+            }
+        });
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("MyHome").child(roomname);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -70,4 +77,19 @@ public class BulbInfoPage extends AppCompatActivity {
         }
         p.setVisibility(View.INVISIBLE);
     }
+    //adding the functionality so that on LongCLick the status of the bulb changes
+    void ChangeStatus(int index)
+    {
+        int tStatus=arrayList.get(index).getStatus();
+        if(tStatus==0)
+        {
+            tStatus=1;
+        }
+        else
+        {
+            tStatus=0;
+        }
+        FirebaseDatabase.getInstance().getReference().child("MyHome").child(roomname).child(arrayList.get(index).getName()).child("status").setValue(tStatus);
+    }
+
 }
