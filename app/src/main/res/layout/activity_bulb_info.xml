@@ -43,8 +43,17 @@
         <ListView
             android:id="@+id/bulbsList"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="500dp" >
 
         </ListView>
+
+        <Button
+            android:id="@+id/overrideButton"
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#8F1010"
+            android:layout_height="60dp"
+            android:onClick="toggleOverride"
+            android:text="" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

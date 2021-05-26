@@ -4,9 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -27,6 +29,7 @@ public class BulbInfoPage extends AppCompatActivity {
     ArrayList<BulbsInfo> arrayList;
     ListView listViewBulbs;
     ProgressBar p;
+    int overrideStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +60,10 @@ public class BulbInfoPage extends AppCompatActivity {
                     {
                         BulbsInfo temp = dataSnapshot.getValue(BulbsInfo.class);
                         arrayList.add(temp);
-
+                    }
+                    else{
+                        overrideStatus=Integer.parseInt(dataSnapshot.getValue().toString());
+                        setInitialOverrideStatus();
                     }
                 }
                 generatePage();
@@ -96,4 +102,24 @@ public class BulbInfoPage extends AppCompatActivity {
         FirebaseDatabase.getInstance().getReference().child("MyHome").child(roomname).child(arrayList.get(index).getName()).child("status").setValue(tStatus);
     }
 
+    public void toggleOverride(View view) {
+        if(overrideStatus==1)
+            overrideStatus=0;
+        else
+            overrideStatus=1;
+        FirebaseDatabase.getInstance().getReference().child("MyHome").child(roomname).child("override").setValue(overrideStatus);
+        setInitialOverrideStatus();
+    }
+
+    public void setInitialOverrideStatus(){
+        Button overB = findViewById(R.id.overrideButton);
+        if(overrideStatus==1){
+            overB.setText("Currently overriden");
+            overB.setBackgroundColor(Color.parseColor("#8F1010"));
+        }
+        else{
+            overB.setText("Click to override");
+            overB.setBackgroundColor(Color.parseColor("#014a00"));
+        }
+    }
 }
