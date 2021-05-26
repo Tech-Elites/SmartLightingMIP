@@ -15,7 +15,7 @@
 
         <ImageView
             android:background="@drawable/torch"
-            android:id="@+id/imageView3"
+            android:id="@+id/bulbImageView"
             android:layout_width="220dp"
             android:layout_height="100dp"
             android:layout_weight="1"
