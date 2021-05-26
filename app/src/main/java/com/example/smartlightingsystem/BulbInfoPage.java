@@ -53,8 +53,12 @@ public class BulbInfoPage extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 arrayList.clear();
                 for(DataSnapshot dataSnapshot:snapshot.getChildren()){
-                    BulbsInfo temp = dataSnapshot.getValue(BulbsInfo.class);
-                    arrayList.add(temp);
+                    if(dataSnapshot.getKey().compareTo("override")!=0)
+                    {
+                        BulbsInfo temp = dataSnapshot.getValue(BulbsInfo.class);
+                        arrayList.add(temp);
+
+                    }
                 }
                 generatePage();
             }
